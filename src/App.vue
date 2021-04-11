@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { v4 as uuidv4 } from 'uuid'
 export default {
   name: 'App',
   data(){
@@ -16,10 +17,14 @@ export default {
   mounted(){
     var domain = 'meet.jit.si'
     var options = {
-      roomName: 'Testroom',
+      roomName: uuidv4(),
       width: 600,
       height: 500,
-      parentNode: document.querySelector('#meet')
+      parentNode: document.querySelector('#meet'),
+      userInfo: {
+        email: 'email@jitsiexamplemail.com',
+        displayName: 'John Doe'
+      }
     }
     var api = new JitsiMeetExternalAPI(domain, options)
   }
